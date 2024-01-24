@@ -31,8 +31,7 @@
 //   };
 
 //   return (
-    
-   
+
 //     <div style={{ height: 400, width: '120%' }}>
 //      <Button variant="contained" color="primary" onClick={handleCreateStore}>
 //         Create Store
@@ -51,17 +50,16 @@
 //         {...data}
 //       />
 //     </div>
-    
+
 //   );
 // };
 
 // export default Stores;
 
-
-import React, { useState, useEffect } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import React, { useState, useEffect } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const Stores = () => {
   const navigate = useNavigate();
@@ -71,15 +69,15 @@ const Stores = () => {
   useEffect(() => {
     const fetchStoreData = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/stores');
+        const response = await fetch("http://localhost:4000/api/stores");
         const data = await response.json();
-       // Add a unique 'id' property to each row using 'storeCode' from the API response
-      const rowsWithId = data.map((row) => ({ ...row, id: row.storeCode }));
+        // Add a unique 'id' property to each row using 'storeCode' from the API response
+        const rowsWithId = data.map((row) => ({ ...row, id: row.storeCode }));
 
-      setStoreData(rowsWithId);
+        setStoreData(rowsWithId);
         //setStoreData(data);
       } catch (error) {
-        console.error('Error fetching store data:', error);
+        console.error("Error fetching store data:", error);
       }
     };
 
@@ -90,17 +88,17 @@ const Stores = () => {
     setRowSelectionModel(newRowSelectionModel);
     const selectedRowId = newRowSelectionModel[0];
 
-        if (selectedRowId) {
-          // Replace '/your-target-page' with the path you want to navigate to
-          navigate(`/dashboard/settings/updatestore/${selectedRowId}`);
-        }
+    if (selectedRowId) {
+      // Replace '/your-target-page' with the path you want to navigate to
+      navigate(`/dashboard/settings/updatestore/${selectedRowId}`);
+    }
 
     // You can access the selected row data from the state (storeData) based on newRowSelectionModel
   };
 
   const handleCreateStore = () => {
     // Replace '/create-store' with the path for creating a store
-    navigate('/dashboard/settings/createstore');
+    navigate("/dashboard/settings/createstore");
   };
 
   const columns = [
@@ -116,7 +114,7 @@ const Stores = () => {
     //   renderCell: (params) => {
     //     const { data } = params.row;
     //     const { address, city, region, postalCode, country } = data;
-  
+
     //     if (address) {
     //       return address;
     //     } else if (country) {
@@ -134,36 +132,38 @@ const Stores = () => {
     // },
     { field: "name", headerName: "Store Name", width: 150 },
     {
-      field: 'address',
-      headerName: 'Address',
+      field: "address",
+      headerName: "Address",
       width: 250,
       renderCell: (params) => {
         const { row } = params;
-        
+
         // Check if row is defined before destructure
         if (!row) {
-          return ''; // or handle accordingly
+          return ""; // or handle accordingly
         }
-  
+
         const { address, city, region, postalCode, country } = row;
-  
+
         if (address) {
           return address;
-        } 
+        }
         // else if (country) {
         //   // If 'country' is an object, display the 'label' property
         //   const countryLabel = country.label || ''; // Use an empty string if 'label' is not present
         //   return countryLabel;
-        // } 
+        // }
         else if (city || region || postalCode || country) {
-        // If 'country' is an object and not the default country, display the 'label' property
-        // const countryLabel = country.label !== 'Default Country' ? country.label : '';
-        const countryLabel = country.label || '';
+          // If 'country' is an object and not the default country, display the 'label' property
+          // const countryLabel = country.label !== 'Default Country' ? country.label : '';
+          const countryLabel = country.label || "";
           // Display a combination of city, region, postalCode if address and country are not present
-          const components = [city, region, postalCode,countryLabel].filter(Boolean);
-          return components.join(', ');
+          const components = [city, region, postalCode, countryLabel].filter(
+            Boolean
+          );
+          return components.join(", ");
         } else {
-          return ''; // If none of the fields are present
+          return ""; // If none of the fields are present
         }
       },
     },
@@ -172,7 +172,7 @@ const Stores = () => {
   ];
 
   return (
-    <div style={{ height: 600, width: '100%' }}>
+    <div style={{ height: 600, width: "100%" }}>
       <Button variant="contained" color="primary" onClick={handleCreateStore}>
         Create Store
       </Button>
@@ -196,12 +196,6 @@ const Stores = () => {
 };
 
 export default Stores;
-
-
-
-
-
-
 
 // import React from 'react';
 // import { DataGrid } from '@mui/x-data-grid';

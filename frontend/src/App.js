@@ -7,11 +7,12 @@ import SideBarNav from "./components/dashboardLayout/sidebarNav";
 
 //import Items Pages
 import ItemList from "./pages/items/ItemList";
-import Categories from "./pages/items/Categories";
+import Categories from "./pages/items/categories/Categories";
 import Modifiers from "./pages/items/Modifiers";
 import Discounts from "./pages/items/Discounts";
 import AddItem from "./pages/items/AddItem";
-import CategoryList from "./pages/items/CategoryList";
+import CategoryList from "./pages/items/categories/CategoryList";
+import CategoryEdit from "./pages/items/categories/CategoryEdit";
 
 //import Deal Pages
 import DealList from "./pages/deal/DealList";
@@ -77,6 +78,14 @@ function App() {
           element={
             <SideBarNav>
               <Categories />
+            </SideBarNav>
+          }
+        />
+         <Route
+          path="/dashboard/goods/categoryedit/:categoryCode"
+          element={
+            <SideBarNav>
+              <CategoryEdit />
             </SideBarNav>
           }
         />

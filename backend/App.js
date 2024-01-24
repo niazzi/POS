@@ -10,6 +10,7 @@ const customerRoutes = require('./routes/Customer');
 const refundRoutes = require('./routes/Refund')
 const supplierRoutes = require('./routes/Supplier');
 const storeRoutes = require('./routes/settings/Store');
+const categoryRouter = require('./routes/items/Categories');
 
 
 const app = express();
@@ -47,6 +48,7 @@ app.use('/api', customerRoutes);
 app.use('/api', refundRoutes);
 app.use('/api', supplierRoutes);
 app.use('/api', storeRoutes);
+app.use('/api', categoryRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

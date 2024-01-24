@@ -373,8 +373,8 @@
 
 .create-purchase-order-form-field  .MuiAutocomplete-root {
   /* background-color: red; */
-  width: 47.6%; 
-  margin: 10px;
+  width: 49%; 
+  /* margin: 10px; */
  
 }
 

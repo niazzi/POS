@@ -150,7 +150,6 @@ const CreateStore = ({ onSubmitSuccess }) => {
       <Typography variant="h5" gutterBottom className="supplier-heading">
         Create Store
       </Typography>
-
       <Box className="supplier-form-container">
         <Box className="supplier-form-field">
           <TextField
